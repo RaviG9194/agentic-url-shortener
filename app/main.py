@@ -151,7 +151,7 @@ def redirect_to_original(
 
     if (
         url_record.expires_at is not None
-        and url_record.expires_at <= datetime.now(timezone.utc)
+        and url_record.expires_at <= datetime.now(timezone.utc).replace(tzinfo=None)
     ):
         raise HTTPException(
             status_code=410,
